@@ -22,36 +22,76 @@ body{
 a{color:inherit}
 .site-header{
   position:sticky;top:0;z-index:50;
-  background:rgba(16,42,53,.96);backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.12);
+  background:rgba(16,42,53,.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(226,201,142,.22);
 }
 .navbar{
-  width:min(1180px,92%);margin:auto;min-height:76px;
-  display:flex;align-items:center;justify-content:space-between;gap:25px;
+  width:min(1180px,92%);margin:auto;min-height:82px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:30px;
 }
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.brand{
+  display:flex;align-items:center;gap:13px;text-decoration:none;
+  color:#fff;min-width:300px;
+}
+.brand-mark-wrap{
+  width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;flex-shrink:0;
+  background:linear-gradient(145deg,#f4d98f,#b88a3d);
+  box-shadow:0 5px 18px rgba(0,0,0,.22);
+  padding:3px;
+}
 .brand-mark{
-  width:42px;height:42px;border:1px solid rgba(255,255,255,.4);border-radius:50%;
-  object-fit:cover;background:#fff;padding:3px;
+  width:100%;height:100%;border-radius:50%;
+  object-fit:contain;background:#102a35;padding:4px;
 }
-.brand strong{font-family:"Playfair Display",serif;font-size:20px;letter-spacing:.4px}
-.brand span{display:block;font-size:10px;letter-spacing:2.5px;color:#d9c99f;text-transform:uppercase;line-height:1.2}
-.nav-links{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.brand-copy strong{
+  display:block;font-family:"Playfair Display",serif;
+  font-size:19px;line-height:1.05;letter-spacing:.2px;
+}
+.brand-copy>span{
+  display:block;margin-top:4px;font-size:10px;letter-spacing:2.8px;
+  color:#e2c98e;text-transform:uppercase;line-height:1.1;
+}
+.nav-links{
+  display:flex;gap:6px;align-items:center;justify-content:flex-end;
+  flex-wrap:nowrap;
+}
 .nav-links a{
-  text-decoration:none;color:#eaf0f0;padding:9px 15px;border-radius:999px;
-  font-size:13px;font-weight:600;letter-spacing:.2px;transition:.25s;
+  position:relative;text-decoration:none;color:#edf2f2;
+  padding:11px 16px;border-radius:10px;
+  font-size:13px;font-weight:600;letter-spacing:.15px;
+  transition:.25s;white-space:nowrap;
 }
-.nav-links a:hover,.nav-links a.active{background:#e2c98e;color:#102a35}
+.nav-links a:after{
+  content:"";position:absolute;left:16px;right:16px;bottom:6px;
+  height:2px;border-radius:2px;background:#e2c98e;
+  transform:scaleX(0);transform-origin:center;transition:.25s;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-links a:hover:after,.nav-links a.active:after{transform:scaleX(1)}
+.nav-links a.active{background:rgba(226,201,142,.13);color:#fff}
 main{width:min(1180px,92%);margin:0 auto;padding:72px 0 90px}
 .hero{
   min-height:650px;border-radius:30px;overflow:hidden;position:relative;
-  display:flex;align-items:flex-end;
+  display:flex;align-items:flex-end;isolation:isolate;
   background:
     linear-gradient(90deg,rgba(8,22,28,.82) 0%,rgba(8,22,28,.52) 45%,rgba(8,22,28,.12) 100%),
     url("../images/heritage/gateway-of-india.jpg") center/cover;
   box-shadow:var(--shadow);
 }
-.hero-content{max-width:720px;padding:70px;color:#fff}
+.hero-content{max-width:760px;padding:70px;color:#fff;position:relative;z-index:2}
+.hero-stamp{
+  position:absolute;right:55px;top:55px;z-index:2;width:112px;height:112px;
+  border:1px solid rgba(226,201,142,.65);border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#f4dfaa;background:rgba(8,22,28,.32);backdrop-filter:blur(5px);
+  text-align:center;transform:rotate(8deg);
+}
+.hero-stamp span{font-size:8px;letter-spacing:2px;font-weight:700}
+.hero-stamp strong{font-family:"Playfair Display",serif;font-size:25px;line-height:1.1}
+.hero-stamp small{font-size:7px;line-height:1.25;letter-spacing:1.2px}
 .eyebrow,.page-kicker{
   text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:700;color:#e2c98e;
 }
@@ -166,21 +206,34 @@ main{width:min(1180px,92%);margin:0 auto;padding:72px 0 90px}
 }
 .submit{background:var(--navy);color:#fff}.reset{background:#ece8df;color:var(--ink)}
 .site-footer{background:#102a35;color:#dce5e5;margin-top:30px}
-.footer-inner{width:min(1180px,92%);margin:auto;padding:42px 0;display:flex;justify-content:space-between;gap:30px}
-.footer-inner strong{font-family:"Playfair Display",serif;color:#fff;font-size:22px}
+.footer-inner{width:min(1180px,92%);margin:auto;padding:38px 0;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.footer-inner strong{font-family:"Playfair Display",serif;color:#fff;font-size:21px}
 .footer-inner p{margin:7px 0 0;font-size:12px;color:#aebec0}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-links a{color:#dce5e5;text-decoration:none;font-size:12px}
+.footer-note{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#e2c98e}
 @media(max-width:900px){
- .nav-links{display:none}.navbar{min-height:68px}
+ .navbar{min-height:76px;gap:16px}
+ .brand{min-width:0}.brand-copy strong{font-size:17px}
+ .nav-links{gap:2px}
+ .nav-links a{padding:9px 10px;font-size:12px}
+ .nav-links a:after{left:10px;right:10px}
  .hero{min-height:600px}.hero-content{padding:45px 32px}
  .feature-grid,.booking-shell,.detail-layout{grid-template-columns:1fr}
  .cards{grid-template-columns:repeat(2,1fr)}
  .info-panel{position:static}
  .gallery-item,.gallery-item:nth-child(n){grid-column:span 6}
 }
+@media(max-width:720px){
+ .navbar{width:94%;padding:10px 0;flex-wrap:wrap;justify-content:center}
+ .brand{width:100%;justify-content:center}
+ .nav-links{width:100%;justify-content:center;overflow-x:auto;padding-bottom:2px}
+ .nav-links a{font-size:11px;padding:8px 10px}
+ .hero-stamp{width:82px;height:82px;right:22px;top:22px}
+ .hero-stamp strong{font-size:19px}
+ .hero-stamp small{font-size:6px}
+}
 @media(max-width:620px){
  main{width:92%;padding:45px 0 65px}.hero{min-height:570px;border-radius:22px}
- .hero h1{font-size:62px}.hero-content{padding:32px 24px}
+ .hero h1{font-size:62px}.hero-content{padding:32px 24px}.hero-stamp{display:none}
  .section{margin-top:60px}.section-head{display:block}
  .section-head h2{margin-bottom:12px}.cards{grid-template-columns:1fr}
  .gallery-item,.gallery-item:nth-child(n){grid-column:span 12}
